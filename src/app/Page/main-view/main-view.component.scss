@@ -1,0 +1,31 @@
+.baord-wrapper {
+    display: flex;
+    flex-grow: 1;
+    overflow-x: auto;
+
+    .board-columns{
+        display: flex;
+        flex-grow: 1;
+
+        .board-column {
+            display: flex;
+            flex-direction: column;
+            flex-grow: 1;
+            flex-basis: 0; // this is to force columns to all the same size reguardless of content used inside of them
+
+            background: rgba(white , 0.5);
+
+            min-width: 300px;
+            margin: 50px;
+            padding: 25px;
+
+            border-radius: 4px;
+
+            &:not(:first-child) {
+                margin-left: 0;
+            }
+        }
+
+    }
+
+}
