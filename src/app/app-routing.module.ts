@@ -7,6 +7,10 @@ const routes: Routes = [
     path: '',
     component:MainViewComponent
   },
+  {
+    path: 'employees',
+    component:MainViewComponent
+  },
 ];
 
 @NgModule({

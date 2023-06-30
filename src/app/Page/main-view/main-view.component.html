@@ -7,7 +7,7 @@
   
     <div id="KanBanNavBar" class="navbar-menu">
       <div class="navbar-start">
-        <a class="navbar-item" href="">
+        <a class="navbar-item" routerLink="employees">
           Employees
         </a>
   
@@ -27,14 +27,19 @@
   <div class="board">
     <div class="baord-wrapper">
 
-        <div class="board-columns">
+        <div class="board-columns" cdkDropListGroup>
             <div class="board-column">
                 <div class="column-title">
                     Employees
                 </div>
-                <div class="task-container">
-                  <div class="task">
-                    this is a task !!!
+                <div class="task-container" 
+                cdkDropList
+                #todoList="cdkDropList"
+                [cdkDropListData]="todo"
+                (cdkDropListDropped)="drop($event)">
+
+                  <div class="task" *ngFor="let employees of todo" cdkDrag>
+                   {{item}}
                   </div>
                 </div>
 
@@ -42,6 +47,17 @@
             <div class="board-column">
                 <div class="column-title">
                     At Work Employees
+                </div>
+
+                <div class="task-container" 
+                cdkDropList
+                #todoList="cdkDropList"
+                [cdkDropListData]="done"
+                (cdkDropListDropped)="drop($event)">
+
+                  <div class="task" *ngFor="let item of done" cdkDrag>
+                   {{item}}
+                  </div>
                 </div>
 
             </div>
