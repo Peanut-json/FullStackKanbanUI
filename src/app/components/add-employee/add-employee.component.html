@@ -1,0 +1,43 @@
+<div class="container">
+ <!--* adding subject fields for new employees-->
+
+<div class="title is-1 is-spaced">
+    <h1>New Employee</h1>
+</div>
+
+<form class="box" #form ="ngForm" (ngSubmit)=" addEmployee()">
+
+    <div class="field">
+        <label class="label-name ">Name</label>
+        <div class="control has-icons-left has-icons-right">
+          <input class="input is-rounded" type="text" name="name" placeholder="Name e.g Dean Beckingham"
+          [(ngModel)]="addEmployeeRequest.name">
+        </div>
+      
+      </div>
+      
+      <div class="field">
+        <label class="label-email ">Email</label>
+        <div class="control has-icons-left has-icons-right">
+          <input class="input is-rounded" type="email" email="email" placeholder="Email e.g Billy@hotmail.co.uk"
+          [(ngModel)]="addEmployeeRequest.email">
+        
+        </div>
+      </div>
+    
+      <div class="field">
+        <label class="label-email ">Phone</label>
+        <div class="control has-icons-left has-icons-right">
+          <input class="input is-rounded" type="phone" phone="phone"  placeholder="Phone e.g 78482648549"
+          [(ngModel)]="addEmployeeRequest.phone">
+        
+        </div>
+    </div>
+    
+    <div class="field is-grouped">
+    <div class="control">
+      <button class="button">Submit</button>
+    </div>
+</div>
+</form> 
+

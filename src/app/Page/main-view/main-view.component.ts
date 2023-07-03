@@ -27,12 +27,7 @@ constructor(private employeesService: EmployeesService ) {}
         this.employees = employees  // *taking the value of responce and populating it into a variable.
   
         console.log(employees);
-      },
-      // *loading the responce to the console aswell as the Error repsonce to the console also 
-      error: (response) => {
-         console.log(response);
       }
-      
       })
 
   }
