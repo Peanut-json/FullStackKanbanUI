@@ -50,4 +50,13 @@ constructor(private route:ActivatedRoute , private employeeService: EmployeesSer
       }
     })
   }
+
+  deleteEmployee(id:string) {
+    this.employeeService.deleteEmployee(id)
+    .subscribe({
+      next: (responce) => {
+        this.router.navigate(['employees'])
+      }
+    });
+  }
 }
