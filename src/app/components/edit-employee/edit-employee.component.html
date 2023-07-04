@@ -1,1 +1,49 @@
-<p>edit-employee works!</p>
+<div class="container">
+    <!--* adding subject fields for new employees-->
+   
+   <div class="title is-spaced"></div>
+   
+   <form class="box" #form ="ngForm" (ngSubmit)="updateEmployee()">
+
+    <div class="field">
+        <label class="label-name ">ID</label>
+        <div class="control">
+          <input class="input is-rounded" type="text" name="id" readonly
+          [(ngModel)]="employeeDetails.id" id="id">
+        </div>
+      
+      </div>
+   
+       <div class="field">
+           <label class="label-name ">Name</label>
+           <div class="control">
+             <input class="input is-rounded" type="text" name="name" placeholder="Name e.g Dean Beckingham"
+             [(ngModel)]="employeeDetails.name" id="name">
+           </div>
+         
+         </div>
+         
+         <div class="field">
+           <label class="label-email ">Email</label>
+           <div class="control">
+             <input class="input is-rounded" type="email" name="email" placeholder="Email e.g Billy@hotmail.co.uk"
+             [(ngModel)]="employeeDetails.email" id="email">
+           
+           </div>
+         </div>
+       
+         <div class="field">
+           <label class="label-email ">Phone</label>
+           <div class="control">
+             <input class="input is-rounded" type="phone" name="phone"  placeholder="Phone e.g 78482648549"
+             [(ngModel)]="employeeDetails.phone" id="phone">
+           
+           </div>
+       </div>
+       
+       <div class="field is-grouped">
+       <div class="control">
+         <button class="button" type="submit">Submit</button>
+       </div>
+   </div>
+   </form> 
