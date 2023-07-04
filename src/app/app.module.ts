@@ -9,6 +9,7 @@ import { DragDropModule } from '@angular/cdk/drag-drop';
 import { HttpClientModule } from '@angular/common/http';
 import { AddEmployeeComponent } from './components/add-employee/add-employee.component';
 import { FormsModule } from '@angular/forms';
+import { EditEmployeeComponent } from './components/edit-employee/edit-employee.component';
 
 
 
@@ -17,6 +18,7 @@ import { FormsModule } from '@angular/forms';
     AppComponent,
     MainViewComponent,
     AddEmployeeComponent,
+    EditEmployeeComponent,
   ],
   imports: [
     BrowserModule,
