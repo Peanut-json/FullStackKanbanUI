@@ -13,7 +13,9 @@ import { EmployeesService } from 'src/app/Services/employees.service';
 export class MainViewComponent implements OnInit {
  
 
-employees: Employee[] = [];
+  employees: Employee[] = [];
+
+  atWork: Employee[] = []
 
 constructor(private employeesService: EmployeesService ) {}
 

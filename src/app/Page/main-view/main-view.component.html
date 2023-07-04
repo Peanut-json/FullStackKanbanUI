@@ -38,13 +38,13 @@
                 <div class="task-container" 
                 cdkDropList
                 #todoList="cdkDropList"
-                [cdkDropListData]="employees"
+                [cdkDropListData]="atWork"
                 (cdkDropListDropped)="drop($event)">
 
-                  <div class="task" *ngFor="let item of employees" cdkDrag>
-                   {{item.name}}
-                   {{item.email}}
-                   {{item.phone}}
+                  <div class="task" *ngFor="let employee of atWork" cdkDrag>
+                    {{employee.name}},
+                    {{employee.email}},
+                    {{employee.phone}},
                   </div>
                 </div>
 
