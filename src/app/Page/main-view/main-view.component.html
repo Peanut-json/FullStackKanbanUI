@@ -21,6 +21,10 @@
                    {{employee.name}},
                    {{employee.email}},
                    {{employee.phone}},
+                   <a class="button is-small button is-primary is-inverted" [routerLink]="['/employees', 'edit' , employee.id ]"
+                   >edit</a>
+
+
 
                   </div>
                 </div>
@@ -38,7 +42,9 @@
                 (cdkDropListDropped)="drop($event)">
 
                   <div class="task" *ngFor="let item of employees" cdkDrag>
-                   {{item.id}}
+                   {{item.name}}
+                   {{item.email}}
+                   {{item.phone}}
                   </div>
                 </div>
 
