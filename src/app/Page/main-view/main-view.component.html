@@ -2,21 +2,20 @@
   <!--* board bar and columns HTML -->
 
   <div class="board">
-    <div class="baord-wrapper">
+    <div class="baord-wrapper" cdkDropListGroup> 
 
-        <div class="board-columns" cdkDropListGroup>
+        <div class="board-columns" *ngFor="let employeeGroup of employees">
             <div class="board-column">
                 <div class="column-title">
-                    Employees
+                    {{employeeGroup.description}}
                 </div>
                 <div class="task-container"
                 cdkDropList
                 #todoList="cdkDropList"
                 (cdkDropListDropped)="drop($event)"
-                cdkDropListData="0"
-                >
+                [cdkDropListData]="employeeGroup" >
 
-                  <div class="task" *ngFor="let employee of employees" cdkDrag [cdkDragData]="employee">
+                  <div class="task" *ngFor="let employee of employeeGroup.employees" cdkDrag [cdkDragData]="employee">
                    {{employee.id}},
                    {{employee.name}},
                    {{employee.email}},
@@ -24,53 +23,9 @@
                    <a class="button is-small button is-primary is-inverted" [routerLink]="['/employees', 'edit' , employee.id ]"
                    >edit</a>
 
-
-
                   </div>
                 </div>
-
             </div>
-            <div class="board-column">
-                <div class="column-title">
-                    At Work Employees
-                </div>
-
-                <div class="task-container"
-                cdkDropList
-                #todoList="cdkDropList"
-                cdkDropListData="1"
-                (cdkDropListDropped)="drop($event)">
-
-                  <div class="task" *ngFor="let employee of atWork" cdkDrag>
-                    {{employee.name}},
-                    {{employee.email}},
-                    {{employee.phone}},
-                  </div>
-                </div>
-
-            </div>
-            <div class="board-column">
-                <div class="column-title">
-                    Off Employees
-                </div>
-
-                <div class="task-container"
-                cdkDropList
-                #todoList="cdkDropList"
-                cdkDropListData="2"
-                (cdkDropListDropped)="drop($event)">
-
-                  <div class="task" *ngFor="let employee of offWork" cdkDrag>
-                    {{employee.name}},
-                    {{employee.email}},
-                    {{employee.phone}},
-                  </div>
-                </div>
-
-
-
-            </div>
-
         </div>
 
       </div>
