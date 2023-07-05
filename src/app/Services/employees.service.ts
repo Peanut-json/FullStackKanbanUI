@@ -8,29 +8,33 @@ import { Observable } from 'rxjs';
 })
 export class EmployeesService {
 
-  baseApiUrl : string = environment.baseAPIUrl
+  baseApiUrl: string = environment.baseAPIUrl
 
   constructor(private http: HttpClient) { }
 
 
-  getAllEmployees():Observable<Employee[]> {
-    return this.http.get<Employee[]>(this.baseApiUrl + '/api/employees'); //*GET responce for all data within database table 
+  getAllEmployees(): Observable<Employee[]> {
+    return this.http.get<Employee[]>(this.baseApiUrl + '/api/employees'); //*GET responce for all data within database table
   }
 
-  addEmployee(addEmployeeRequest:Employee):Observable<Employee>{
+  addEmployee(addEmployeeRequest: Employee): Observable<Employee> {
     addEmployeeRequest.id = '00000000-0000-0000-0000-000000000000';
-    return this.http.post<Employee>(this.baseApiUrl + '/api/employees', addEmployeeRequest) //*POST responce for adding to databse table 
+    return this.http.post<Employee>(this.baseApiUrl + '/api/employees', addEmployeeRequest) //*POST responce for adding to databse table
   }
 
-  getEmployee(id:string):Observable<Employee> {
+  getEmployee(id: string): Observable<Employee> {
     return this.http.get<Employee>(this.baseApiUrl + '/api/employees/' + id) //* GET the employees for responce
   }
 
-  updateEmpoloyee(id:string , updateEmployeeRequest: Employee):Observable<Employee>{
-    return this.http.put<Employee>(this.baseApiUrl + '/api/employees/' + id , updateEmployeeRequest)
+  updateEmpoloyee(id: string, updateEmployeeRequest: Employee): Observable<Employee> {
+    return this.http.put<Employee>(this.baseApiUrl + '/api/employees/' + id, updateEmployeeRequest)
   }
 
-  deleteEmployee(id: string):Observable<Employee> {
-    return this.http.delete<Employee> (this.baseApiUrl + '/api/employees/' + id)
+  deleteEmployee(id: string): Observable<Employee> {
+    return this.http.delete<Employee>(this.baseApiUrl + '/api/employees/' + id)
+  }
+
+  changeStatus(id: string, changeStatus: number): Observable<Employee> {
+    return this.http.patch<Employee>(this.baseApiUrl + '/api/employees/' + id, changeStatus)
   }
 }

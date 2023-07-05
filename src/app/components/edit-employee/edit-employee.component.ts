@@ -11,17 +11,16 @@ import { EmployeesService } from 'src/app/Services/employees.service';
 })
 export class EditEmployeeComponent implements OnInit {
 
-employeeDetails: Employee = {
+  employeeDetails: Employee = {
+    id: '',
+    name: '',
+    email: '',
+    phone: 0,
+    status: ''
+  }
 
-  id: '',
-  name: '',
-  email: '',
-  phone: 0
 
-}
-
-
-constructor(private route:ActivatedRoute , private employeeService: EmployeesService , private router: Router) {}
+  constructor(private route: ActivatedRoute, private employeeService: EmployeesService, private router: Router) { }
 
 
   ngOnInit(): void {
@@ -29,34 +28,34 @@ constructor(private route:ActivatedRoute , private employeeService: EmployeesSer
       next: (params) => {
         const id = params.get('id');
 
-        if (id) {  //* this will call the API 
+        if (id) {  //* this will call the API
 
           this.employeeService.getEmployee(id)
-          .subscribe({
-            next: (responce) => {
-              this.employeeDetails = responce;
-            }
-          })
+            .subscribe({
+              next: (responce) => {
+                this.employeeDetails = responce;
+              }
+            })
         }
       }
     })
   }
 
-  updateEmployee(){
-    this.employeeService.updateEmpoloyee(this.employeeDetails.id ,this.employeeDetails)
-    .subscribe({
-      next: (response) => {
-        this.router.navigate(['employees'])
-      }
-    })
+  updateEmployee() {
+    this.employeeService.updateEmpoloyee(this.employeeDetails.id, this.employeeDetails)
+      .subscribe({
+        next: (response) => {
+          this.router.navigate(['employees'])
+        }
+      })
   }
 
-  deleteEmployee(id:string) {
+  deleteEmployee(id: string) {
     this.employeeService.deleteEmployee(id)
-    .subscribe({
-      next: (responce) => {
-        this.router.navigate(['employees'])
-      }
-    });
+      .subscribe({
+        next: (responce) => {
+          this.router.navigate(['employees'])
+        }
+      });
   }
 }

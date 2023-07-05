@@ -1,6 +1,6 @@
 <div class="root">
   <!--* board bar and columns HTML -->
-  
+
   <div class="board">
     <div class="baord-wrapper">
 
@@ -9,14 +9,14 @@
                 <div class="column-title">
                     Employees
                 </div>
-                <div class="task-container" 
+                <div class="task-container"
                 cdkDropList
                 #todoList="cdkDropList"
                 (cdkDropListDropped)="drop($event)"
-                [cdkDropListData]="employees"
+                cdkDropListData="0"
                 >
 
-                  <div class="task" *ngFor="let employee of employees" cdkDrag>
+                  <div class="task" *ngFor="let employee of employees" cdkDrag [cdkDragData]="employee">
                    {{employee.id}},
                    {{employee.name}},
                    {{employee.email}},
@@ -35,10 +35,10 @@
                     At Work Employees
                 </div>
 
-                <div class="task-container" 
+                <div class="task-container"
                 cdkDropList
                 #todoList="cdkDropList"
-                [cdkDropListData]="atWork"
+                cdkDropListData="1"
                 (cdkDropListDropped)="drop($event)">
 
                   <div class="task" *ngFor="let employee of atWork" cdkDrag>
@@ -53,11 +53,26 @@
                 <div class="column-title">
                     Off Employees
                 </div>
-               
+
+                <div class="task-container"
+                cdkDropList
+                #todoList="cdkDropList"
+                cdkDropListData="2"
+                (cdkDropListDropped)="drop($event)">
+
+                  <div class="task" *ngFor="let employee of offWork" cdkDrag>
+                    {{employee.name}},
+                    {{employee.email}},
+                    {{employee.phone}},
+                  </div>
+                </div>
+
+
+
             </div>
-            
+
         </div>
-        
+
       </div>
 
   </div>
@@ -65,4 +80,4 @@
 </div>
 
 
-  
+
