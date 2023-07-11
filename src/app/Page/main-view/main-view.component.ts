@@ -15,13 +15,7 @@ export class MainViewComponent implements OnInit {
 
   employees: EmployeeStatus[] = [{
     description: "Employees",
-    employees: [{
-      email: "test",
-      id: "jdfksaljdksalj",
-      name: "dave",
-      phone: "80",
-      status: 0
-    }],
+    employees: [],
     statusId: 0
   },
   {
@@ -45,10 +39,7 @@ export class MainViewComponent implements OnInit {
       .subscribe({
         next: (employees) => {
 
-          // Dean you will want to split these into the collections defined above based on the value of status
-          this.employees[0].employees = employees  // *taking the value of responce and populating it into a variable.
-
-          console.log(employees);
+          splitEmployees(employees, this.employees);
         }
       })
 
@@ -58,12 +49,15 @@ export class MainViewComponent implements OnInit {
     if (event.previousContainer === event.container) {
       moveItemInArray(event.container.data.employees, event.previousIndex, event.currentIndex);
     } else {
-      
+
       // Here is how you get the employee
       let employeeId = event.item.data.id;
 
       // And the Status ID
       let statusId = event.container.data.statusId;
+
+      this.employeesService.changeStatus(employeeId, statusId)
+        .subscribe();
 
       transferArrayItem(
         event.previousContainer.data.employees,
@@ -71,6 +65,19 @@ export class MainViewComponent implements OnInit {
         event.previousIndex,
         event.currentIndex,
       );
+    }
+  }
+}
+
+export function splitEmployees(employees: Pick<Employee, "status">[], statuses: (Pick<EmployeeStatus, "statusId"> & { employees: { status: number }[] })[]) {
+
+  for (let Employee of employees) {  // **of*** gives values  **in** gives keys
+
+    for (let employeeStatus of statuses) {
+
+      if (Employee.status === employeeStatus.statusId) {
+        employeeStatus.employees.push(Employee);
+      }
     }
   }
 }

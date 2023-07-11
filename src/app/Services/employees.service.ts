@@ -35,6 +35,6 @@ export class EmployeesService {
   }
 
   changeStatus(id: string, changeStatus: number): Observable<Employee> {
-    return this.http.patch<Employee>(this.baseApiUrl + '/api/employees/' + id, changeStatus)
+    return this.http.patch<Employee>(`${this.baseApiUrl}/api/employees/${id}/status`, changeStatus)
   }
 }
